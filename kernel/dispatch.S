@@ -4,10 +4,10 @@
 
 dispatch_entry:
     push    {r4-r7}
-    mov     r0 r8
-    mov     r1 r9
-    mov     r2 r10
-    mov     r3 r11
+    mov     r0, r8
+    mov     r1, r9
+    mov     r2, r10
+    mov     r3, r11
     push    {r0-r3}
 
     ldr     r0, =current_thread

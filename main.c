@@ -2,6 +2,7 @@
 #include "inc/typedef.h"
 
 #include "pico/stdlib.h"
+#include "hardware/exception.h"
 
 u32 stack1[1024];
 u32 stack2[1024];
@@ -38,7 +39,7 @@ int main(){
     ctx_table[0] = init_context(stack1, sizeof(stack1), thread1);
     ctx_table[1] = init_context(stack2, sizeof(stack2), thread2);
 
-
+    exception_set_exclusive_handler(-2, dispatch_entry);
 
     next_thread = 1;
     dispatch();

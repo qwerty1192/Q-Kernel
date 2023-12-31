@@ -39,5 +39,6 @@ static inline void dispatch(void){
 }
 
 extern void *init_context(u32 *stackPointer, UINT ssize, void* (*startp)());
+extern void dispatch_entry(void);
 
 #endif
