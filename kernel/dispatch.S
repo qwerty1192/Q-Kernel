@@ -15,7 +15,7 @@ dispatch_entry:
     cmp     r1, #0
     beq     disp_010
 
-    ldr     r0, =disp_running
+    ldr     r0, =ctx_table
     sub     r1, #1
     lsl     r1, r1, #1
     mov     r2, sp
@@ -27,7 +27,7 @@ disp_010:
     ldr     r0, =current_thread
     str     r1, [r0]
 
-    ldr     r0, =disp_running
+    ldr     r0, =ctx_table
     sub     r1, #1
     lsl     r1, r1, #2
     ldr     r2, [r1, r0]
