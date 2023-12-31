@@ -38,6 +38,6 @@ static inline void dispatch(void){
    *(_u32*)M0PLUS_ICSR_OFFSET = M0PLUS_ICSR_PENDSVSET_BITS;
 }
 
-extern void *make_context(u32 *stackPointer, UINT ssize, void* (*startp)());
+extern void *init_context(u32 *stackPointer, UINT ssize, void* (*startp)());
 
 #endif
