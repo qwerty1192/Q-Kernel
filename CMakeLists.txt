@@ -16,9 +16,11 @@ add_compile_options(-Wall
 
 add_executable(${PROJECT_NAME}
         main.c
+        kernel/context.c
+        kernel/dispatch.S
         )
 
-target_link_libraries(${PROJECT_NAME} pico_stdlib)
+target_link_libraries(${PROJECT_NAME} pico_stdlib hardware_exception)
 
 pico_add_extra_outputs(${PROJECT_NAME} )
 

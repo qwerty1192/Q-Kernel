@@ -33,11 +33,12 @@
 // } q_thread_control_block;
 
 // ディスパッチャ呼び出し
-static inline void dispatch(void){
+static inline void *dispatch(void){
     // PendSV例外発生
-   *(_u32*)M0PLUS_ICSR_OFFSET = M0PLUS_ICSR_PENDSVSET_BITS;
+   *(_u32*)(M0PLUS_ICSR_OFFSET | 0xe0000000) = M0PLUS_ICSR_PENDSVSET_BITS;
 }
 
-extern void *init_context(u32 *stackPointer, UINT ssize, void* (*startp)());
+extern void *init_context(u32 *stackPointer, UINT ssize, void (*startp)());
+extern void dispatch_entry(void);
 
 #endif
