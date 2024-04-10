@@ -7,7 +7,7 @@ typedef struct {
     u32 xpsr;
 } Context;
 
-void *init_context(u32 *stackPointer, UINT ssize, void* (*startp)()){
+void *init_context(u32 *stackPointer, u32 ssize, void (*startp)()){
     Context *ctx;
     ctx = (Context*)((u32)stackPointer + ssize);
     ctx--;
