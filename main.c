@@ -25,7 +25,7 @@ void thread1(void){
 void thread2(void){
     while(1){
         gpio_put(25, 0);
-        sleep_ms(500);
+        sleep_ms(1000);
 
         next_thread = 1;
         dispatch();
@@ -36,19 +36,13 @@ int main(){
     gpio_init(25);
     gpio_set_dir(25, GPIO_OUT);
 
-    // ctx_table[0] = init_context(stack1, sizeof(stack1), thread1);
-    // ctx_table[1] = init_context(stack2, sizeof(stack2), thread2);
-
-    dispatch_entry();
-    sleep_ms(500);
-    dispatch_entry();
+    ctx_table[0] = init_context(stack1, sizeof(stack1), thread1);
+    ctx_table[1] = init_context(stack2, sizeof(stack2), thread2);
 
     exception_set_exclusive_handler(-2, dispatch_entry);
 
-    // next_thread = 1;
+    next_thread = 1;
+    dispatch();
 
-    while(1){
-        dispatch();
-        sleep_ms(500);
-    }
+    while(1);
 }
