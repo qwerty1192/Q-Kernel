@@ -17,6 +17,7 @@ add_compile_options(-Wall
 add_executable(${PROJECT_NAME}
         main.c
         kernel/context.c
+        kernel/thread_queue.c
         kernel/dispatch.S
         )
 
